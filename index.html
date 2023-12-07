@@ -1,0 +1,80 @@
+<a href="index.html">index</a>
+<a href="index2.html">index2</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .right-close {
+            text-align: right;
+            position: relative;
+        }
+        .popup-container {
+            display: none; /* Hide the popup by default */
+            position: fixed;
+            background: #000000a1;
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            bottom: 0px;
+        }
+        .main-popup {
+            padding: 10px 0px;
+            background: white;
+            position: absolute;
+            padding: 20px;
+            left: 0px;
+            right: 0px;
+            width: 45%;
+            margin: auto;
+            top: 0px;
+            height: 120px;
+            bottom: 0px;
+        }
+        .main-popup button {
+            background: transparent;
+            padding: 0px;
+            border: none !important;
+        }
+        .button-right {
+            text-align: right;
+        }
+        .text-center-para {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="popup-container">
+        <div class="main-popup">
+            <div class="button-right"><button class="right-close">CLOSE</button></div>
+            <div class="text-center-para">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Check if the session flag is set to show the popup
+            if (!sessionStorage.getItem('popupClosed')) {
+                $('.popup-container').show();
+            }
+
+            // Close button click event
+            $('.right-close').on('click', function () {
+                // Hide the popup
+                $('.popup-container').hide();
+                // Set the session flag to not show the popup again during this session
+                sessionStorage.setItem('popupClosed', true);
+            });
+        });
+    </script>
+
+
+</body>
+</html>
